@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(44, 43, 43);
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        .navbar>ul {
+            list-style: none;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            gap: 20px;
+            color: white;
+            margin: 20px 35px;
+        }
+
+        ul>li>a {
+            text-decoration: none;
+            color: white;
+        }
+
+        a:hover {
+            color: gray;
+        }
+
+        #img {
+            width: 250px;
+            height: 220px;
+            position: relative;
+            top: 100px;
+        }
+
+        .search {
+            display: flex;
+            gap: 20px;
+            margin: 35px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        #inpt {
+            background-color: transparent;
+            width: 450px;
+            height: 35px;
+            padding: 20px;
+            border-radius: 25px;
+            border: 2px solid gray;
+            cursor: pointer;
+            color: white;
+            display: block;
+        }
+
+        #cross {
+            position: absolute;
+            left: 61%;
+            top: 49%;
+            filter: invert(1);
+            transform: translate(0, -50%);
+            width: 18px;
+            height: 18px;
+            display: none;
+        }
+
+        #search1 {
+            filter: invert(1);
+        }
+
+        @media only screen and (max-width: 600px) {
+
+            #img {
+                width: 150px;
+                height: 150px;
+            }
+
+            #inpt {
+                width: 250px;
+                position: relative;
+                left: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a
+                    href="https://accounts.google.com/InteractiveLogin/signinchooser?continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&emr=1&followup=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&osid=1&passive=1209600&service=mail&ifkv=ATuJsjxUTTlcnRN_TrHcPWNTKKBBNymbOFLWiAst7u1dogFL01wBQp4uBLVD8W04VGZTlNAMnl5oDw&theme=mn&flowName=GlifWebSignIn&flowEntry=ServiceLogin">Gmail</a>
+            </li>
+            <li><a href="https://www.google.com/imghp?hl=en&authuser=0&ogbl">Images</a></li>
+        </ul>
+    </div>
+    <div class="container">
+
+        <div class="image">
+            <img id="img" src="social.png" alt="">
+        </div>
+        <div class="search">
+            <input type="text" id="inpt" placeholder="Search here...">
+            <img id="search1" src="search.svg" alt="">
+            <img id="cross" src="cross.svg" alt="">
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('cross').addEventListener('click', () => {
+            document.getElementById('inpt')
+                .value = '';
+            document.getElementById('cross').style.display = 'none';
+        });
+
+        window.addEventListener('keydown', () => {
+            if (document.getElementById('inpt').value.length > 0) {
+                document.getElementById('cross').style.display = 'block';
+            }
+        })
+
+        document.getElementById('search1').addEventListener('click', () => {
+            window.location.href = `https://www.google.com/search?q=${document.getElementById('inpt').value}`
+        })
+    </script>
+</body>
+
+</html>
